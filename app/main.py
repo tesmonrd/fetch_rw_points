@@ -101,7 +101,7 @@ def show_transactions(db: Session = Depends(get_db)):
     return transactions
 
 
-@app.post("/transaction/add/bulk", response_model=List[schemas.Transaction], tags=["additional methods"])
+@app.post("/transaction/add/bulk/", response_model=List[schemas.Transaction], tags=["additional methods"])
 def add_bulk_transactions(transactions: List[schemas.TransactionBase], db: Session = Depends(get_db)):
     """Creates bulk transactions. Accepts a list of dicts that conform to TransactionBase schema."""
     resp = []

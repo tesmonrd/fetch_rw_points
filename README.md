@@ -45,7 +45,7 @@ The FastAPI config page is the default home page. You can examine and run API qu
 #### Transactions:
 `curl -X 'GET' 'http://127.0.0.1:8000/transactions/' -H 'accept: application/json'`
 #### Bulk add:
-`curl -X 'POST' 'http://127.0.0.1:8000/transaction/add/bulk' -H 'accept: application/json' -H 'Content-Type: application/json' -d '[
+`curl -X 'POST' 'http://127.0.0.1:8000/transaction/add/bulk/' -H 'accept: application/json' -H 'Content-Type: application/json' -d '[
     { "payer": "DANNON", "points": 300, "timestamp": "2022-10-31T10:00:00Z" },
     { "payer": "UNILEVER", "points": 200, "timestamp": "2022-10-31T11:00:00Z" },
     { "payer": "DANNON", "points": -200, "timestamp": "2022-10-31T15:00:00Z" },
