@@ -3,6 +3,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from app.main import app, get_db
 from app.database import Base
+from pathlib import Path
 import pytest
 import os
 
@@ -35,7 +36,11 @@ client = TestClient(app)
 
 
 def cleanup_db():
-    pass
+    # locate project root
+    parent_dir = str(Path(__file__).parent.parent.parent)
+    os.remove(parent_dir+"/base_db.db")
+    os.remove(parent_dir+"/test.db")
+
 
 def _create_transactions(bulk=False):
     """Helper method to populate db with transactions."""
@@ -108,3 +113,4 @@ def test_show_transactions(test_db):
     response = client.get("/transactions/")
     data = response.json()
     assert len(data) == 6
+    cleanup_db()
